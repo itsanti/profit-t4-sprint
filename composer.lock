@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "3bcdc13267892716b8ecdec030de2c68",
+    "hash": "0211578e9f583e4eb0c92d4d3c157825",
     "content-hash": "ff3fd04fa72a80f5be58310333fddb28",
     "packages": [
         {
@@ -74,12 +74,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/pr-of-it/t4.git",
-                "reference": "6e38f6c4c51488b3fefbc43b9202e735e06cc63b"
+                "reference": "85a0511da771f3626666ed594d1c24d377b935a7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pr-of-it/t4/zipball/6e38f6c4c51488b3fefbc43b9202e735e06cc63b",
-                "reference": "6e38f6c4c51488b3fefbc43b9202e735e06cc63b",
+                "url": "https://api.github.com/repos/pr-of-it/t4/zipball/85a0511da771f3626666ed594d1c24d377b935a7",
+                "reference": "85a0511da771f3626666ed594d1c24d377b935a7",
                 "shasum": ""
             },
             "require": {
@@ -109,7 +109,7 @@
                 "php",
                 "t4"
             ],
-            "time": "2016-05-05 09:19:14"
+            "time": "2016-05-08 12:58:38"
         },
         {
             "name": "psr/log",

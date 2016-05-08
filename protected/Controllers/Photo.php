@@ -4,16 +4,14 @@ namespace App\Controllers;
 
 use T4\Mvc\Controller;
 
-class Index
+class Photo
     extends Controller
 {
-
     public function actionDefault()
     {
-        $this->data->name = $this->app->config->myapp->name;
     }
 
-    public function actionAbout()
+    public function actionLast()
     {
     }
 }
