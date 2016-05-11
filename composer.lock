@@ -9,16 +9,16 @@
     "packages": [
         {
             "name": "phpmailer/phpmailer",
-            "version": "v5.2.14",
+            "version": "v5.2.15",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPMailer/PHPMailer.git",
-                "reference": "e774bc9152de85547336e22b8926189e582ece95"
+                "reference": "d0186171b28af4f06ac2ad8a84a8f3d6cbc3ba6c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/e774bc9152de85547336e22b8926189e582ece95",
-                "reference": "e774bc9152de85547336e22b8926189e582ece95",
+                "url": "https://api.github.com/repos/PHPMailer/PHPMailer/zipball/d0186171b28af4f06ac2ad8a84a8f3d6cbc3ba6c",
+                "reference": "d0186171b28af4f06ac2ad8a84a8f3d6cbc3ba6c",
                 "shasum": ""
             },
             "require": {
@@ -29,8 +29,7 @@
                 "phpunit/phpunit": "4.7.*"
             },
             "suggest": {
-                "league/oauth2-client": "Needed for XOAUTH2 authentication",
-                "league/oauth2-google": "Needed for Gmail XOAUTH2"
+                "league/oauth2-google": "Needed for Google XOAUTH2 authentication"
             },
             "type": "library",
             "autoload": {
@@ -66,7 +65,7 @@
                 }
             ],
             "description": "PHPMailer is a full-featured email creation and transfer class for PHP",
-            "time": "2015-11-01 10:15:28"
+            "time": "2016-05-10 18:39:36"
         },
         {
             "name": "pr-of-it/t4",
@@ -74,12 +73,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/pr-of-it/t4.git",
-                "reference": "85a0511da771f3626666ed594d1c24d377b935a7"
+                "reference": "231eaa0f164f731ae1c90e904660585fddbbe7d0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/pr-of-it/t4/zipball/85a0511da771f3626666ed594d1c24d377b935a7",
-                "reference": "85a0511da771f3626666ed594d1c24d377b935a7",
+                "url": "https://api.github.com/repos/pr-of-it/t4/zipball/231eaa0f164f731ae1c90e904660585fddbbe7d0",
+                "reference": "231eaa0f164f731ae1c90e904660585fddbbe7d0",
                 "shasum": ""
             },
             "require": {
@@ -109,7 +108,7 @@
                 "php",
                 "t4"
             ],
-            "time": "2016-05-08 12:58:38"
+            "time": "2016-05-11 08:47:19"
         },
         {
             "name": "psr/log",

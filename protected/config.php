@@ -6,6 +6,10 @@ return [
     'myapp' => [
         'name' => 'Интенсив Т4'
     ],
+    
+    'uploads' => [
+        'news' => '/uploads/news'
+    ],
 
     # приложение будет использовать расширения
     'extensions' => [
@@ -15,8 +19,8 @@ return [
             'autoload' => true,
             # использовать локальные файлы из /public/Assets или CDN
             'location' => 'local',
-            # какую тему оформления Bootstrap использовать
-            'theme'    => 'cosmo'
+            # какую тему оформления Bootstrap использовать spacelab sandstone lumen
+            'theme'    => 'sandstone'
         ]
     ]
     

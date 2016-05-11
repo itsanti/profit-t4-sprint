@@ -1,0 +1,6 @@
+<h2>Самая свежая новость на сайте</h2>
+<h3><a href="/news/{{id}}">{{ article.title }}</a></h3>
+<p>
+    <img src="{{ article.getSrc }}" class="img-thumbnail" width="200">
+    {{ article.text[0:100] }}...
+</p>

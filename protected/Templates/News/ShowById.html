@@ -1,0 +1,17 @@
+{% extends 'Index.html' %}
+
+{% block content %}
+    {% if article %}
+        <article class="clearfix">
+            <h1>{{ article.title }}</h1>
+            <img src="{{ article.getSrc }}" class="img-thumbnail pull-left" width="400" style="margin-right: 10px;">
+            <p>{{ article.text }}</p>
+        </article>
+        <nav class="text-center">
+            <a href="/news/">назад к новостям</a>
+        </nav>
+    {% else %}
+        <h1>Новость {{ id }}</h1>
+        <p class="text-danger lead">Новости с <code>id = {{ id }}</code> не существует.</p>
+    {% endif %}
+{% endblock %}

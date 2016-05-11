@@ -1,0 +1,16 @@
+{% extends 'Index.html' %}
+
+{% block content %}
+    <h1 class="text-center">Новости проекта</h1>
+
+        {% for article in articles %}
+        <div>
+            <h2><a href="/news/{{loop.index}}">{{ article.title }}</a></h2>
+            <p>
+                <img src="{{ article.getSrc }}" class="img-thumbnail" width="200">
+                {{ article.text[0:100] }}...
+            </p>
+        </div>
+        {% endfor %}
+
+{% endblock %}

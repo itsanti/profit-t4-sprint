@@ -1,0 +1,22 @@
+{% extends 'Index.html' %}
+
+{% block content %}
+<form method="post" enctype="multipart/form-data" action="/news/add/">
+    <div class="form-group">
+        <label for="title">News Title</label>
+        <input type="text" class="form-control" name="title" id="title"
+               placeholder="Enter title" value="{{ app.flash.title }}" required>
+    </div>
+    <div class="form-group">
+        <label for="text">News Body</label>
+        <textarea class="form-control" name="text" id="text"
+                  placeholder="Enter News Body" required>{{ app.flash.text }}</textarea>
+    </div>
+    <div class="form-group">
+        <label for="image">News Image</label>
+        <input type="file" name="image" id="image">
+        <p class="help-block">png or jpg image for news</p>
+    </div>
+    <button type="submit" class="btn btn-default">add news</button>
+</form>
+{% endblock %}

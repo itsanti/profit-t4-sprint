@@ -5,7 +5,19 @@
   <title>{{ app.config.myapp.name }}</title>
   {{ publishCss() }}
 </head>
-<body>
+<body class="container">
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <ul class="nav navbar-nav">
+        <li {% if app.request.url.path == '/' %}class="active"{% endif %}><a href="/">home</a></li>
+        <li {% if app.request.url.path matches '~/news/(\\d+)?$~' %}class="active"{% endif %}><a href="/news/">news</a></li>
+        <li {% if app.request.url.path == '/news/add/' %}class="active"{% endif %}><a href="/news/add/">add news</a></li>
+      </ul>
+    </div>
+  </nav>
+  {% if app.flash.error %}
+    <div style="border: 1px solid red;" class="text-warning">{{ app.flash.message }}</div>
+  {% endif %}
 {% block content %}{% endblock %}
 {{ publishJs() }}
 </body>
