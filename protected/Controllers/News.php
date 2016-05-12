@@ -10,47 +10,36 @@ class News
     extends Controller
 {
 
-    protected $news = null;
-
-    protected function beforeAction( $action ) {
-        $this->news = new \App\Models\News(ROOT_PATH_PROTECTED . '/Components/News/data.php');
-        return true;
-    }
-
     public function actionShowAll()
     {
-        $this->data->articles = $this->news->findAll();
+        $news = new \App\Models\News(ROOT_PATH_PROTECTED . '/Components/News/data.php');
+        $this->data->articles = $news->findAll();
     }
 
     public function actionShowById(int $id = 0)
     {
-
-        $this->data->id = $id;
-        
-        $article = $this->news->findOne($id);
-
-        if (count($article)) {
-            $this->data->article = $article;
-        } else {
-            $this->data->article = null;
-        }
+        $news = new \App\Models\News(ROOT_PATH_PROTECTED . '/Components/News/data.php');
+        $this->data->id      = $id;
+        $this->data->article = $news->findOne($id);
     }
     
     public function actionGetLast() {
-        $data = $this->news->findLast();
-        $this->data->id = $data['id'];
-        $this->data->article = $data['article'];
+        $news = new \App\Models\News(ROOT_PATH_PROTECTED . '/Components/News/data.php');
+        $this->data->article = $news->findLast();
     }
 
     public function actionAdd()
     {
         if ($this->app->request->method === 'post') {
+
+            $news = new \App\Models\News(ROOT_PATH_PROTECTED . '/Components/News/data.php');
+
             $post = $this->app->request->post;
             $file = $this->app->request->files['image'];
 
             // формируем имя для файла
             $ext = pathinfo($file->name, \PATHINFO_EXTENSION);
-            $file->name = 'img' . sprintf('%02d', count($this->news) + 1) . '.' . $ext;
+            $file->name = 'img' . sprintf('%02d', count($news) + 1) . '.' . $ext;
 
             // обрабатываем загрузку файла
             $uploader = new Uploader('image', ['png', 'jpg']);
@@ -79,7 +68,7 @@ class News
 
                 $article['image'] = pathinfo($file, \PATHINFO_BASENAME);
 
-                $id = $this->news->add($article);
+                $id = $news->add($article);
 
                 $this->redirect('/news/' . $id);
             }

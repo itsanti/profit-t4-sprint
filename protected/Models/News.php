@@ -17,23 +17,20 @@ class News
         return $data;
     }
 
-    public function findOne( $id ): Article {
+    public function findOne( $id )
+    {
         $data = $this->findAll();
 
         if ( array_key_exists( $id, $data ) ) {
             return $data[ $id ];
         } else {
-            return new Article();
+            return false;
         }
     }
 
     public function findLast()
     {
-        $data = $this->findAll();
-        return [
-            'id' => count($data),
-            'article' => array_pop($data)
-        ];
+        return new Article(array_pop($this->toArray()));
     }
 
     public function add(Article $data)
