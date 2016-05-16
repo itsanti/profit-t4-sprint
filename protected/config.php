@@ -11,6 +11,17 @@ return [
         'news' => '/uploads/news'
     ],
 
+    # подключение к БД
+    'db' => [
+        'default' => [
+            'driver' => 'mysql',
+            'host' => 'localhost',
+            'user' => 'root',
+            'password' => '',
+            'dbname' => 'fw'
+        ]
+    ],
+
     # приложение будет использовать расширения
     'extensions' => [
         # встроенная поддержка фреймворка Bootstrap

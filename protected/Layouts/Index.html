@@ -10,8 +10,8 @@
     <div class="container">
       <ul class="nav navbar-nav">
         <li {% if app.request.url.path == '/' %}class="active"{% endif %}><a href="/">home</a></li>
-        <li {% if app.request.url.path matches '~/news/(\\d+)?$~' %}class="active"{% endif %}><a href="/news/">news</a></li>
-        <li {% if app.request.url.path == '/news/add/' %}class="active"{% endif %}><a href="/news/add/">add news</a></li>
+        <li {% if app.request.url.path matches '~^/news/(\\d+)?$~' %}class="active"{% endif %}><a href="/news/">news</a></li>
+        <li {% if app.request.url.path matches '~^/admin/news/~' %}class="active"{% endif %}><a href="/admin/news/">admin news</a></li>
       </ul>
     </div>
   </nav>

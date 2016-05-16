@@ -1,0 +1,20 @@
+{% extends 'Index.html' %}
+
+{% block content %}
+    <h1 class="text-center">список новостей</h1>
+    <table class="table table-bordered table-condensed">
+        <tr>
+            <th>id</th><th>title</th><th>pub. date</th><th>edit</th><th>delete</th>
+        </tr>
+        {% for article in articles %}
+        {% set id = article.getPk %}
+        <tr>
+            <td>{{ id }}</td>
+            <td>{{ article.title }}</td>
+            <td>{{ article.created | date("Y.m.d H:m:s") }}</td>
+            <td><a class="btn btn-success btn-sm" href="/admin/news/edit/{{ id }}/">edit</a></td>
+            <td><a class="btn btn-danger btn-sm" href="/admin/news/del/{{ id }}/">delete</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock %}

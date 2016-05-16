@@ -1,0 +1,9 @@
+{% extends 'Index.html' %}
+
+{% block content %}
+<h1 class="text-danger">Удалить новость {{ id }}?</h1>
+
+<form method="post" action="/admin/news/del/{{ id }}/">
+    <button type="submit" class="btn btn-default">del news</button>
+</form>
+{% endblock %}
