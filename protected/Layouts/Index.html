@@ -12,6 +12,7 @@
         <li {% if app.request.url.path == '/' %}class="active"{% endif %}><a href="/">home</a></li>
         <li {% if app.request.url.path matches '~^/news/(\\d+)?$~' %}class="active"{% endif %}><a href="/news/">news</a></li>
         <li {% if app.request.url.path matches '~^/admin/news/~' %}class="active"{% endif %}><a href="/admin/news/">admin news</a></li>
+        <li {% if app.request.url.path matches '~^/shop~' %}class="active"{% endif %}><a href="/shop">shop</a></li>
       </ul>
     </div>
   </nav>

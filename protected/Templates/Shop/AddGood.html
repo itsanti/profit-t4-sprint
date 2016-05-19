@@ -1,0 +1,26 @@
+{% extends 'Index.html' %}
+
+{% block content %}
+<h1>Добавление нового товара</h1>
+<form method="post" action="/shop/addgood/">
+    <div class="form-group">
+        <label for="cat">Родительская категория</label>
+        <select class="form-control" name="cat" id="cat">
+        {% for category in categories %}
+            <option value="{{category.getPk}}">{{category.title}}</option>
+        {% endfor %}
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="title">Название товара</label>
+        <input type="text" class="form-control" name="title" id="title"
+                  placeholder="Enter Good Title" required>
+    </div>
+    <div class="form-group">
+        <label for="price">Цена товара</label>
+        <input type="number" step="0.01" class="form-control" name="price" id="price"
+               placeholder="Enter Good Price" required>
+    </div>
+    <button type="submit" class="btn btn-default">add good</button>
+</form>
+{% endblock %}
