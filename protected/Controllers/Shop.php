@@ -16,12 +16,6 @@ class Shop
         $categories = Category::findAllTree();
         $this->data->root       = $categories->first();
         $this->data->categories = $this->renderCategories($categories->slice(1), 1);
-
-        /*$cat1 = Category::findByPK(3);
-        $cat = new Category();
-        $cat->title = 'Radeon';
-        $cat->parent = $cat1;
-        $cat->save();*/
     }
 
     public function actionAdd()
@@ -76,8 +70,9 @@ class Shop
                 $good->price = $post['price'];
                 $good->category = $cat;
                 $good->save();
+
+                $this->redirect('/shop/show?id=' . $cat->getPk());
             }
-            $this->redirect('/shop/show?id='.$cat->getPk());
         }
     }
     
