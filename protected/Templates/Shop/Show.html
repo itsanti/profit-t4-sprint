@@ -1,9 +1,9 @@
 {% extends 'Index.html' %}
 
 {% block content %}
-    {% if goods is not empty %}
-    <h1>Товары категории {{ cattitle }}</h1>
-    {% for good in goods %}
+    {% if cat.goods is not empty %}
+    <h1>Товары категории {{ cat.title }}</h1>
+    {% for good in cat.goods %}
     <div class="panel panel-default">
         <div class="panel-heading">{{ good.title }}</div>
         <div class="panel-body">
@@ -12,7 +12,7 @@
     </div>
     {% endfor %}
     {% else %}
-    <h1>Товары в категории <strong>{{ cattitle }}</strong> отсутствуют.</h1>
+    <h1>Товары в категории <strong>{{ cat.title }}</strong> отсутствуют.</h1>
     <p><a href="/shop/">выберите другую категорию</a></p>
     {% endif %}
 {% endblock %}

@@ -2,24 +2,32 @@
 
 {% block content %}
 <h1>Добавление нового товара</h1>
+{% for error in errors %}
+<div class="alert alert-danger">{{ error.message }}</div>
+{% endfor %}
 <form method="post" action="/shop/addgood/">
     <div class="form-group">
         <label for="cat">Родительская категория</label>
-        <select class="form-control" name="cat" id="cat">
+        <select class="form-control" name="good[cat]" id="cat">
         {% for category in categories %}
-            <option value="{{category.getPk}}">{{category.title}}</option>
+            {% set id = category.getPk %}
+            {% if id == good.cat %}
+            <option value="{{id}}" selected>{{category.title}}</option>
+            {% else %}
+            <option value="{{id}}">{{category.title}}</option>
+            {% endif %}
         {% endfor %}
         </select>
     </div>
     <div class="form-group">
         <label for="title">Название товара</label>
-        <input type="text" class="form-control" name="title" id="title"
-                  placeholder="Enter Good Title" required>
+        <input type="text" class="form-control" name="good[title]" id="title"
+                  placeholder="Enter Good Title" required value="{{good.title}}">
     </div>
     <div class="form-group">
         <label for="price">Цена товара</label>
-        <input type="number" step="0.01" class="form-control" name="price" id="price"
-               placeholder="Enter Good Price" required>
+        <input type="number" step="0.01" class="form-control" name="good[price]" id="price"
+               placeholder="Enter Good Price" required value="{{good.price}}">
     </div>
     <button type="submit" class="btn btn-default">add good</button>
 </form>

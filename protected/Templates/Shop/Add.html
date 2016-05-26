@@ -2,19 +2,27 @@
 
 {% block content %}
 <h1>Добавление новой категории</h1>
+{% for error in errors %}
+<div class="alert alert-danger">{{ error.message }}</div>
+{% endfor %}
 <form method="post" action="/shop/add/">
     <div class="form-group">
         <label for="cat">Родительская категория</label>
-        <select class="form-control" name="cat" id="cat">
+        <select class="form-control" name="cat[id]" id="cat">
         {% for category in categories %}
-            <option value="{{category.getPk}}">{{category.title}}</option>
+        {% set id = category.getPk %}
+        {% if id == cat.id %}
+        <option value="{{id}}" selected>{{category.title}}</option>
+        {% else %}
+        <option value="{{id}}">{{category.title}}</option>
+        {% endif %}
         {% endfor %}
         </select>
     </div>
     <div class="form-group">
         <label for="title">Название категории</label>
-        <input type="text" class="form-control" name="title" id="title"
-                  placeholder="Enter Category Title" required>
+        <input type="text" class="form-control" name="cat[title]" id="title"
+                  placeholder="Enter Category Title" required value="{{cat.title}}">
     </div>
     <button type="submit" class="btn btn-default">add category</button>
 </form>

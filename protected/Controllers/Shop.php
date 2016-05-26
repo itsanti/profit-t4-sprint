@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\Category;
 use App\Models\Good;
+use T4\Core\MultiException;
 use T4\Mvc\Controller;
 
 
@@ -18,20 +19,31 @@ class Shop
         $this->data->categories = $this->renderCategories($categories->slice(1), 1);
     }
 
-    public function actionAdd()
+    public function actionAdd($cat = null)
     {
         $this->data->categories = Category::findAllTree();
+        $this->data->cat = $cat;
 
         if ($this->app->request->method === 'post') {
-            $post = $this->app->request->post;
-            $parent = Category::findByPK($post['cat']);
+
+            $parent = Category::findByPK($cat['id']);
+
             if(!empty($parent)) {
-                $cat = new Category();
-                $cat->title = $post['title'];
-                $cat->parent = $parent;
-                $cat->save();
+                try {
+                    $data = new Category();
+
+                    $data->fill($cat);
+
+                    $data->parent = $parent;
+
+                    $data->save();
+
+                    $this->redirect('/shop');
+
+                } catch (MultiException $errors) {
+                    $this->data->errors = $errors;
+                }
             }
-            $this->redirect('/shop');
         }
     }
 
@@ -52,26 +64,34 @@ class Shop
     public function actionShow($id){
         $cat = Category::findByPK($id);
         if (!empty($cat)) {
-            $this->data->cattitle = $cat->title;
-            $this->data->goods = $cat->goods;
+            $this->data->cat = $cat;
         }
     }
 
-    public function actionAddGood()
+    public function actionAddGood($good = null)
     {
         $this->data->categories = Category::findAllTree();
+        $this->data->good = $good;
 
         if ($this->app->request->method === 'post') {
-            $post = $this->app->request->post;
-            $cat = Category::findByPK($post['cat']);
-            if(!empty($cat)) {
-                $good = new Good();
-                $good->title = $post['title'];
-                $good->price = $post['price'];
-                $good->category = $cat;
-                $good->save();
 
-                $this->redirect('/shop/show?id=' . $cat->getPk());
+            $cat = Category::findByPK($good['cat']);
+
+            if(!empty($cat)) {
+                $data = new Good();
+
+                try {
+                    $data->fill($good);
+
+                    $data->category = $cat;
+
+                    $data->save();
+
+                    $this->redirect('/shop/show?id=' . $cat->getPk());
+
+                } catch (MultiException $errors) {
+                    $this->data->errors = $errors;
+                }
             }
         }
     }
